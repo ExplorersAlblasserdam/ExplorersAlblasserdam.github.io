@@ -14,60 +14,51 @@
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- NAVIGATIE -->
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur shadow-sm z-50 p-4 border-b border-gray-100">
         <div class="container mx-auto max-w-5xl flex justify-between items-center font-bold text-scout-green">
             <button onclick="showPage('pagina-home')">EXPLORERS ALBLASSERDAM</button>
-            <button onclick="showPage('pagina-home')" class="text-sm border-2 border-scout-green px-4 py-1 rounded-full hover:bg-green-50">HOME</button>
+            <button onclick="showPage('pagina-home')" class="text-sm border-2 border-scout-green px-4 py-1 rounded-full hover:bg-green-50 uppercase">Home</button>
         </div>
     </nav>
 
-    <!-- 1. DE CENTRALE HOOFDPAGINA -->
+    <!-- 1. CENTRALE HOOFDPAGINA -->
     <div id="pagina-home" class="page-section active">
-        <!-- Hero Sectie -->
         <section class="min-h-screen flex flex-col items-center justify-center bg-scout-green text-white p-6 text-center">
             <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">Wij zijn de Explorers</h1>
-            <p class="text-xl md:text-2xl max-w-2xl mb-10 opacity-90 leading-relaxed">
-                De oudste jeugdgroep van <strong>Scouting Alblasserdam</strong>. Een groep van 15 tot 18 jaar die houdt van avontuur en uitdaging.
+            <p class="text-xl md:text-2xl max-w-2xl mb-10 opacity-90 leading-relaxed mx-auto">
+                De oudste jeugdgroep van <strong>Scouting Alblasserdam</strong>. Wij houden van avontuur, uitdaging en organiseren alles zelf.
             </p>
             <div class="animate-bounce mt-10">
-                <a href="#acties-sectie" class="text-sm font-bold uppercase tracking-widest opacity-70">Scroll naar onze acties<br>▼</a>
+                <a href="#acties-sectie" class="text-sm font-bold uppercase tracking-widest opacity-70">Bekijk onze acties<br>▼</a>
             </div>
         </section>
 
-        <!-- Introductie -->
-        <section class="py-20 bg-white border-b border-gray-100">
-            <div class="container mx-auto max-w-3xl px-6 text-center">
-                <h2 class="text-3xl font-black mb-6 text-scout-green uppercase text-center">Welkom op onze Actiepagina</h2>
-                <p class="text-lg text-gray-600 leading-relaxed mb-6 italic text-center">
-                    Dit is de centrale plek voor al onze inzamelingsacties. Wij sparen voor onze kampen en activiteiten. Help jij ons mee?
+        <section class="py-20 bg-white border-b border-gray-100 text-center">
+            <div class="container mx-auto max-w-3xl px-6">
+                <h2 class="text-3xl font-black mb-6 text-scout-green uppercase">Welkom op onze Actiepagina</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6 italic">
+                    Hier vind je al onze projecten waarmee wij geld inzamelen voor onze kampen en activiteiten. Steun jij ons mee?
                 </p>
             </div>
         </section>
 
-        <!-- ACTIES GEDEELTE -->
         <section id="acties-sectie" class="py-20 bg-gray-50">
             <div class="container mx-auto max-w-4xl px-6">
-                <h2 class="text-4xl font-black mb-12 text-center text-scout-green uppercase tracking-tight text-center">Onze Acties</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Klusjesactie Kaart -->
+                <h2 class="text-4xl font-black mb-12 text-center text-scout-green uppercase tracking-tight">Onze Acties</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-left">
                     <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 flex flex-col transform hover:scale-[1.02] transition-all">
-                        <div class="bg-orange-500 p-4 text-white font-bold text-center uppercase tracking-widest text-sm font-sans">Zomerkamp Denemarken 🇩🇰</div>
+                        <div class="bg-orange-500 p-4 text-white font-bold text-center uppercase tracking-widest text-sm">Zomerkamp Denemarken 🇩🇰</div>
                         <div class="p-8 flex-grow">
                             <h3 class="text-2xl font-bold mb-3">🛠️ Klusjesactie 2026</h3>
-                            <p class="text-gray-600 mb-8 leading-relaxed">Heeft u hulp nodig bij een klusje? De Explorers komen graag bij u langs om de handen uit de mouwen te steken!</p>
-                            <button onclick="showPage('pagina-klus-intro')" class="w-full bg-scout-green text-white font-bold py-4 rounded-xl hover:bg-green-800 transition-colors shadow-lg">
-                                Klusje Aanmelden
-                            </button>
+                            <p class="text-gray-600 mb-8 leading-relaxed">Hulp nodig in de tuin of bij de schoonmaak? De Explorers steken graag de handen uit de mouwen!</p>
+                            <button onclick="showPage('pagina-klus-intro')" class="w-full bg-scout-green text-white font-bold py-4 rounded-xl hover:bg-green-800 transition-colors shadow-lg">Klusje Aanmelden</button>
                         </div>
                     </div>
-
-                    <!-- Toekomstige actie -->
-                    <div class="bg-gray-100 rounded-3xl border-4 border-dashed border-gray-200 flex items-center justify-center p-8 text-center">
-                        <p class="text-gray-400 font-bold uppercase tracking-widest">Binnenkort:<br>Nieuwe Acties</p>
+                    <div class="bg-gray-100 rounded-3xl border-4 border-dashed border-gray-200 flex items-center justify-center p-8 text-center text-gray-400 font-bold uppercase">
+                        Binnenkort:<br>Nieuwe Acties
                     </div>
                 </div>
             </div>
@@ -76,18 +67,13 @@
 
     <!-- 2. KLUSJES FLOW -->
     <div class="container mx-auto max-w-2xl mt-24 px-4 mb-20">
-        
-        <!-- Introductie Klusjes -->
         <div id="pagina-klus-intro" class="page-section bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-            <h2 class="text-3xl font-black mb-4 text-scout-green uppercase italic">Klusjesactie Denemarken 🇩🇰</h2>
-            <p class="mb-6 leading-relaxed text-gray-600">
-                Wij sparen voor ons zomerkamp naar Denemarken. In ruil voor een donatie komen wij met een team langs om een klusje bij u te klaren. U bepaalt zelf wat u wilt geven!
-            </p>
-            <button onclick="showPage('pagina-keuze')" class="w-full bg-scout-green text-white font-bold py-5 rounded-2xl shadow-lg text-xl hover:bg-green-800 transition-all font-sans">Start Aanmelding</button>
-            <button onclick="showPage('pagina-home')" class="w-full mt-4 text-gray-400 text-sm hover:underline italic">Terug naar start</button>
+            <h2 class="text-3xl font-black mb-4 text-scout-green uppercase italic text-center">Klusjesactie Denemarken 🇩🇰</h2>
+            <p class="mb-6 leading-relaxed text-gray-600 text-center">Wij sparen voor ons kamp naar Denemarken. In ruil voor een donatie komen wij langs om een klusje bij u te klaren. U bepaalt zelf het bedrag!</p>
+            <button onclick="showPage('pagina-keuze')" class="w-full bg-scout-green text-white font-bold py-5 rounded-2xl shadow-lg text-xl hover:bg-green-800 transition-all">Start Aanmelding</button>
+            <button onclick="showPage('pagina-home')" class="w-full mt-4 text-gray-400 text-sm hover:underline italic text-center block">Terug naar start</button>
         </div>
 
-        <!-- Stap 1: Type Klus -->
         <div id="pagina-keuze" class="page-section bg-white rounded-3xl shadow-xl p-8">
             <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2 text-center">Wat kunnen we doen?</h2>
             <div class="grid grid-cols-1 gap-4 mb-8">
@@ -96,39 +82,23 @@
                 <button onclick="selectKlus('Boodschappen')" class="text-left border-2 p-5 rounded-2xl hover:bg-green-50 hover:border-green-600 transition-all font-bold text-lg">🛒 Boodschappen</button>
                 <button onclick="selectKlus('Anders')" class="text-left border-2 p-5 rounded-2xl hover:bg-green-50 hover:border-green-600 transition-all font-bold text-lg">✨ Iets anders...</button>
             </div>
-            <button onclick="showPage('pagina-klus-intro')" class="text-gray-400">← Vorige stap</button>
+            <button onclick="showPage('pagina-klus-intro')" class="text-gray-400 font-bold">← Vorige stap</button>
         </div>
 
-        <!-- Formulier -->
-        <form id="klusForm" action="https://formspree.io/f/mzdabryo" method="POST">
-            <!-- DEZE REGEL zorgt dat de 'Terug' knop op Formspree werkt -->
-            <input type="hidden" name="_next" value="https://diybuilder33.github.io/ActiesExplorersSCoutingAlblasserdam/">
-            
+        <form id="klusForm">
+            <!-- BOT CATCHER (HONEYPOT) -->
+            <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="gekozen_klus" id="input_klus_type">
 
-            <!-- Stap 2: Details & Geld -->
             <div id="pagina-details" class="page-section bg-white rounded-3xl shadow-xl p-8">
-                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2 italic text-scout-green text-center">Details van de klus</h2>
+                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2 italic text-center">Details van de klus</h2>
                 <div class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Beschrijving:</label>
-                        <textarea name="omschrijving" rows="3" class="w-full border-2 p-4 rounded-2xl outline-none focus:border-green-500 transition-colors" placeholder="Wat moet er precies gebeuren?" required></textarea>
-                    </div>
+                    <textarea name="omschrijving" rows="3" class="w-full border-2 p-4 rounded-2xl outline-none focus:border-green-500 shadow-inner" placeholder="Beschrijf de klus..." required></textarea>
                     <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1 text-center">Datum:</label>
-                            <input type="date" name="datum" class="w-full border-2 p-4 rounded-2xl" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1 text-center">Tijdstip:</label>
-                            <input type="text" name="tijd" placeholder="Bijv: 14:00 uur" class="w-full border-2 p-4 rounded-2xl" required>
-                        </div>
+                        <input type="date" name="datum" class="w-full border-2 p-4 rounded-2xl" required>
+                        <input type="text" name="tijd" placeholder="Tijdstip (bv. 14:00)" class="w-full border-2 p-4 rounded-2xl" required>
                     </div>
-                    <div>
-                        <label class="block text-sm font-bold text-orange-600 mb-1 uppercase tracking-tight text-center">Wat wilt u doneren? (€)</label>
-                        <input type="number" name="beloning" class="w-full border-2 border-orange-200 p-4 rounded-2xl focus:border-orange-500 outline-none" placeholder="Bedrag naar keuze" required>
-                        <p class="text-xs text-gray-400 mt-2 text-center italic text-center">U betaalt na afloop via QR-code of contant.</p>
-                    </div>
+                    <input type="number" name="donatie" class="w-full border-2 border-orange-200 p-4 rounded-2xl focus:border-orange-500 shadow-inner" placeholder="Bijdrage (€)" required>
                 </div>
                 <div class="flex gap-4 mt-8">
                     <button type="button" onclick="showPage('pagina-keuze')" class="w-1/3 bg-gray-100 py-4 rounded-2xl font-bold">Terug</button>
@@ -136,16 +106,15 @@
                 </div>
             </div>
 
-            <!-- Stap 3: Contactinfo -->
             <div id="pagina-contact" class="page-section bg-white rounded-3xl shadow-xl p-8">
-                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2 italic text-center">Uw Contactgegevens</h2>
+                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2 italic text-center">Contactgegevens</h2>
                 <div class="space-y-4">
-                    <input type="text" name="naam" id="naam" placeholder="Uw Naam (Verplicht)" class="w-full border-2 p-4 rounded-2xl focus:border-green-500 outline-none" required>
-                    <input type="email" name="email" id="email" placeholder="E-mailadres" class="w-full border-2 p-4 rounded-2xl focus:border-green-500 outline-none">
-                    <input type="tel" name="telefoon" id="tel" placeholder="Telefoonnummer" class="w-full border-2 p-4 rounded-2xl focus:border-green-500 outline-none">
-                    <p id="error-contact" class="text-red-600 text-sm font-bold hidden text-center italic">⚠️ Geef a.u.b. een e-mail of telefoonnummer op!</p>
+                    <input type="text" name="naam" id="naam" placeholder="Naam (Verplicht)" class="w-full border-2 p-4 rounded-xl focus:border-green-500 outline-none" required>
+                    <input type="email" name="email" id="email" placeholder="E-mailadres" class="w-full border-2 p-4 rounded-xl focus:border-green-500 outline-none">
+                    <input type="tel" name="telefoon" id="tel" placeholder="Telefoonnummer" class="w-full border-2 p-4 rounded-xl focus:border-green-500 outline-none">
+                    <p id="error-contact" class="text-red-600 text-sm font-bold hidden text-center italic">⚠️ Vul e-mail of telefoonnummer in!</p>
                 </div>
-                <button type="submit" class="w-full bg-orange-500 text-white py-5 rounded-2xl font-bold shadow-lg mt-8 text-xl hover:bg-orange-600 transition-all font-sans">Verstuur Aanmelding! 🚀</button>
+                <button type="submit" id="submitBtn" class="w-full bg-orange-500 text-white py-5 rounded-2xl font-bold shadow-lg mt-8 text-xl hover:bg-orange-600 transition-all">Verstuur Aanmelding! 🚀</button>
             </div>
         </form>
     </div>
@@ -162,17 +131,38 @@
             showPage('pagina-details');
         }
 
-        document.getElementById('klusForm').onsubmit = function(e) {
+        const form = document.getElementById('klusForm');
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const tel = document.getElementById('tel').value.trim();
+
             if (email === "" && tel === "") {
-                e.preventDefault();
                 document.getElementById('error-contact').classList.remove('hidden');
-                return false;
+                return;
             }
-            return true; // Formulier wordt nu op de 'normale' manier verzonden naar Formspree
-        };
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Versturen...";
+
+            try {
+                // VERVANG HIERONDER JOUW_FORMSPARK_ID_HIER DOOR JE ECHTE ID
+                await fetch("https://submit-form.com/iuKUYiFj1", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", Accept: "application/json" },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form))),
+                });
+                alert("Bedankt! Je klusje is aangemeld. We nemen snel contact op.");
+                form.reset();
+                showPage('pagina-home');
+            } catch (error) {
+                alert("Er ging iets mis. Probeer het later opnieuw.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Verstuur Aanmelding! 🚀";
+            }
+        });
     </script>
 </body>
 </html>
-
