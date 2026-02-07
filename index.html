@@ -3,132 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorers Scouting Alblasserdam - Denemarken 2026</title>
-    <link href="https://cdn.jsdelivr.net" rel="stylesheet">
+    <title>Explorers Denemarken | Scouting Alblasserdam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --scout-groen: #1a5e20; --scout-beige: #f5f5dc; }
-        body { background-color: var(--scout-beige); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com'); 
-                background-size: cover; color: white; padding: 100px 0; text-align: center; }
-        .step-card { display: none; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .active { display: block; }
-        .btn-scout { background-color: var(--scout-groen); color: white; border: none; padding: 15px 30px; font-size: 1.2rem; }
-        .btn-scout:hover { background-color: #114016; color: white; }
+        :root { --scout-green: #1a5e1a; }
+        .bg-scout-green { background-color: var(--scout-green); }
+        .text-scout-green { color: var(--scout-green); }
+        .step { display: none; }
+        .step.active { display: block !important; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-<!-- Hoofdpagina -->
-<div id="home" class="page active">
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-3 fw-bold">Wij zijn de Explorers</h1>
-            <p class="lead">Scouting Alblasserdam</p>
-        </div>
-    </section>
+    <!-- HEADER -->
+    <header class="bg-white shadow-md py-6 text-center">
+        <h1 class="text-2xl font-bold text-scout-green uppercase tracking-wide">Scouting Alblasserdam</h1>
+    </header>
 
-    <div class="container my-5 text-center">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h2>Ons Verhaal</h2>
-                <p>Wij zijn een enthousiaste groep jongeren van Scouting Alblasserdam. Deze zomer staat er iets groots op de planning: ons zomerkamp naar <strong>Denemarken</strong>! Een land vol avontuur, natuur en nieuwe uitdagingen.</p>
-                <div class="alert alert-success mt-4">
-                    <h4>Help ons op weg!</h4>
-                    <p>Om dit kamp te kunnen bekostigen, steken we de handen uit de mouwen. Heb jij een klusje in of rondom huis? Wij doen het graag voor je in ruil voor een bijdrage!</p>
-                </div>
-                <button class="btn btn-scout btn-lg mt-3" onclick="showStep('step-1')">Klusje Aanmelden</button>
+    <div class="container mx-auto max-w-2xl mt-10 px-4 mb-20">
+        
+        <!-- HOOFDPAGINA (Introductie) -->
+        <div id="hoofdpagina" class="step active bg-white rounded-2xl shadow-xl p-8 text-center">
+            <img src="https://www.scouting-alblasserdam.nl" alt="Logo" class="h-24 mx-auto mb-6">
+            <h2 class="text-3xl font-extrabold mb-4 text-scout-green">Wij zijn de Explorers!</h2>
+            <p class="text-lg mb-6 leading-relaxed">
+                Welkom op onze actiepagina. Wij zijn de Explorers van <b>Scouting Alblasserdam</b> en wij hebben een droom: een onvergetelijk zomerkamp naar <b>Denemarken</b>! 
+            </p>
+            <div class="bg-green-50 p-6 rounded-xl mb-8 border-l-4 border-green-600 text-left">
+                <h3 class="font-bold text-xl mb-2">Help ons op weg 🇩🇰</h3>
+                <p>Om dit avontuur te financieren, steken we de handen uit de mouwen. Heb jij een klusje in de tuin, moet er schoongemaakt worden of heb je hulp nodig bij de boodschappen? Wij komen graag langs!</p>
             </div>
+            <button onclick="showStep('step1')" class="w-full bg-scout-green text-white font-bold py-5 rounded-lg shadow-lg hover:bg-green-800 transition-all text-xl">
+                Meld een klusje aan!
+            </button>
         </div>
+
+        <!-- FORMULIER START -->
+        <form id="klusForm" action="https://formspree.io/f/mzdabryo" method="POST" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            
+            <!-- STAP 1: CATEGORIE -->
+            <div id="step1" class="step p-8">
+                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Wat voor klus is het?</h2>
+                <div class="grid grid-cols-1 gap-3 mb-8">
+                    <button type="button" onclick="selectKlus('Tuinieren')" class="text-left border-2 rounded-xl p-4 hover:bg-green-50 transition border-gray-200 font-bold text-lg">🌱 Tuinieren</button>
+                    <button type="button" onclick="selectKlus('Boodschappen')" class="text-left border-2 rounded-xl p-4 hover:bg-green-50 transition border-gray-200 font-bold text-lg">🛒 Boodschappen</button>
+                    <button type="button" onclick="selectKlus('Schoonmaak')" class="text-left border-2 rounded-xl p-4 hover:bg-green-50 transition border-gray-200 font-bold text-lg">🧹 Schoonmaak</button>
+                    <button type="button" onclick="selectKlus('Anders')" class="text-left border-2 rounded-xl p-4 hover:bg-green-50 transition border-gray-200 font-bold text-lg">❓ Iets anders...</button>
+                </div>
+                <input type="hidden" name="categorie" id="input_categorie">
+                <button type="button" onclick="showStep('hoofdpagina')" class="text-gray-500 underline">Terug naar start</button>
+            </div>
+
+            <!-- STAP 2: DETAILS -->
+            <div id="step2" class="step p-8">
+                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Details & Tijd</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-bold mb-1">Beschrijf de klus:</label>
+                        <textarea name="details" rows="3" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="Bijv: Heg snoeien of zolder opruimen..." required></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-bold text-sm">Datum:</label>
+                            <input type="date" name="datum" class="w-full border p-3 rounded-lg" required>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-sm">Tijdsperiode:</label>
+                            <input type="text" name="tijd" placeholder="Bijv: 14:00 - 16:00" class="w-full border p-3 rounded-lg" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-orange-600">Wat wilt u geven? (€)</label>
+                        <input type="number" name="bedrag" class="w-full border p-3 rounded-lg border-orange-300" placeholder="Bedrag naar keuze" required>
+                        <p class="text-xs text-gray-500 mt-1 italic">U betaalt pas als de klus klaar is (Contant of QR).</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-8">
+                    <button type="button" onclick="showStep('step1')" class="w-1/3 bg-gray-200 py-4 rounded-lg font-bold">Terug</button>
+                    <button type="button" onclick="showStep('step3')" class="w-2/3 bg-scout-green text-white py-4 rounded-lg font-bold shadow-lg">Naar contactinfo</button>
+                </div>
+            </div>
+
+            <!-- STAP 3: CONTACTINFO -->
+            <div id="step3" class="step p-8">
+                <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Uw informatie</h2>
+                <div class="space-y-4">
+                    <input type="text" name="naam" id="input_naam" placeholder="Uw Naam (Verplicht)" class="w-full border p-3 rounded-lg" required>
+                    <input type="email" name="email" id="input_email" placeholder="E-mailadres" class="w-full border p-3 rounded-lg">
+                    <input type="tel" name="telefoon" id="input_tel" placeholder="Telefoonnummer" class="w-full border p-3 rounded-lg">
+                    <p id="error-msg" class="text-red-600 text-sm hidden font-bold">Vul minimaal een E-mail of Telefoonnummer in!</p>
+                </div>
+                <div class="flex gap-2 mt-8">
+                    <button type="button" onclick="showStep('step2')" class="w-1/3 bg-gray-200 py-4 rounded-lg font-bold">Terug</button>
+                    <button type="submit" class="w-2/3 bg-orange-500 text-white py-4 rounded-lg font-bold shadow-lg">Verstuur Aanvraag!</button>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 
-<!-- Formulier Container -->
-<div class="container my-5">
-    <form id="klusForm" action="https://formspree.io" method="POST">
-        
-        <!-- Stap 1: Type Klus -->
-        <div id="step-1" class="step-card">
-            <h3 class="mb-4">Wat voor klusje is het?</h3>
-            <div class="row g-3">
-                <div class="col-6"><button type="button" class="btn btn-outline-dark w-100 py-4" onclick="selectKlus('Tuinieren')">🌳 Tuinieren</button></div>
-                <div class="col-6"><button type="button" class="button btn btn-outline-dark w-100 py-4" onclick="selectKlus('Schoonmaken')">🧼 Schoonmaken</button></div>
-                <div class="col-6"><button type="button" class="btn btn-outline-dark w-100 py-4" onclick="selectKlus('Boodschappen')">🛒 Boodschappen</button></div>
-                <div class="col-6"><button type="button" class="btn btn-outline-dark w-100 py-4" onclick="selectKlus('Anders')">✨ Anders</button></div>
-            </div>
-            <input type="hidden" name="klus_type" id="klus_type_input">
-        </div>
-
-        <!-- Stap 2: Details & Planning -->
-        <div id="step-2" class="step-card">
-            <h3 class="mb-4">Details van de klus</h3>
-            <div class="mb-3">
-                <label class="form-label">Wat moet er precies gebeuren?</label>
-                <textarea class="form-control" name="beschrijving" rows="3" required></textarea>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Datum</label>
-                    <input type="date" class="form-control" name="datum" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Tijdstip (bv. 14:00 - 16:00)</label>
-                    <input type="text" class="form-control" name="tijd" placeholder="10:00 uur" required>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Wat wil je hiervoor geven? (€)</label>
-                <input type="number" class="form-control" name="bedrag" placeholder="Bedrag in Euro" required>
-                <small class="text-muted">Betaling na afloop contant of via QR-code.</small>
-            </div>
-            <button type="button" class="btn btn-scout" onclick="showStep('step-3')">Volgende stap</button>
-        </div>
-
-        <!-- Stap 3: Contactgegevens -->
-        <div id="step-3" class="step-card">
-            <h3 class="mb-4">Contactgegevens</h3>
-            <div class="mb-3">
-                <label class="form-label">Naam (verplicht)</label>
-                <input type="text" class="form-control" name="naam" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">E-mailadres</label>
-                <input type="email" class="form-control contact-method" name="email">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Telefoonnummer</label>
-                <input type="tel" class="form-control contact-method" name="telefoon">
-            </div>
-            <p id="contact-error" class="text-danger d-none">Vul a.u.b. minimaal een e-mail of telefoonnummer in.</p>
-            <button type="submit" class="btn btn-scout w-100">Klus Aanmelden & Versturen</button>
-        </div>
-    </form>
-</div>
-
-<script>
-    function showStep(stepId) {
-        document.querySelectorAll('.page, .step-card').forEach(el => el.classList.remove('active'));
-        document.getElementById(stepId).classList.add('active');
-        window.scrollTo(0,0);
-    }
-
-    function selectKlus(type) {
-        document.getElementById('klus_type_input').value = type;
-        showStep('step-2');
-    }
-
-    // Validatie voor minimaal 1 contactveld
-    document.getElementById('klusForm').onsubmit = function(e) {
-        const methods = document.querySelectorAll('.contact-method');
-        let valid = false;
-        methods.forEach(input => { if(input.value.length > 0) valid = true; });
-        
-        if(!valid) {
-            e.preventDefault();
-            document.getElementById('contact-error').classList.remove('d-none');
-            return false;
+    <script>
+        function showStep(stepId) {
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(stepId).classList.add('active');
+            window.scrollTo(0,0);
         }
-    };
-</script>
 
+        function selectKlus(cat) {
+            document.getElementById('input_categorie').value = cat;
+            showStep('step2');
+        }
+
+        document.getElementById('klusForm').onsubmit = function(e) {
+            const email = document.getElementById('input_email').value.trim();
+            const tel = document.getElementById('input_tel').value.trim();
+            if (email === "" && tel === "") {
+                document.getElementById('error-msg').classList.remove('hidden');
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        };
+    </script>
 </body>
 </html>
