@@ -6,133 +6,112 @@
     <title>Klusjesdag | Explorers Scouting Alblasserdam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --scout-green: #1a5e1a;
-            --scout-orange: #e67e22;
-        }
+        :root { --scout-green: #1a5e1a; --scout-orange: #e67e22; }
         .bg-scout-green { background-color: var(--scout-green); }
         .text-scout-green { color: var(--scout-green); }
         .bg-scout-orange { background-color: var(--scout-orange); }
-        .border-scout-green { border-color: var(--scout-green); }
+        .step { display: none; }
+        .step.active { display: block; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header & Logo -->
-    <header class="bg-white shadow-md py-4">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-            <img src="https://www.scouting-alblasserdam.nl" alt="Scouting Alblasserdam Logo" class="h-20 mb-4 md:mb-0">
-            <div class="text-center md:text-right">
-                <h2 class="text-xl font-bold text-scout-green">Explorers Scouting Alblasserdam</h2>
-                <p class="text-sm text-gray-600">Steun ons op weg naar zomerkamp!</p>
-            </div>
-        </div>
+    <header class="bg-white shadow-md py-4 text-center">
+        <!-- Directe link naar logo -->
+        <img src="https://www.scouting-alblasserdam.nl" alt="Logo" class="h-20 mx-auto mb-2">
+        <h2 class="text-xl font-bold text-scout-green">Explorers Scouting Alblasserdam</h2>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-scout-green text-white py-16 px-4">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-4">KLUSJESDAG 🛠️</h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
-                Heeft u een klusje dat al te lang blijft liggen? Wij stropen onze mouwen op! 
-                Met uw bijdrage maken wij ons legendarische zomerkamp mogelijk.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#aanmelden" class="bg-scout-orange hover:scale-105 transition-transform text-white font-bold py-3 px-8 rounded-full shadow-lg">Klusje Aanmelden</a>
-                <p class="text-white mt-4 font-semibold italic">Betalen kan gewoon contant of via een QR-code na afloop van de klus!</p>
-            </div>
-        </div>
+    <section class="bg-scout-green text-white py-12 px-4 text-center">
+        <h1 class="text-4xl font-black mb-4 uppercase">Klusjesdag 🛠️</h1>
+        <p class="max-w-2xl mx-auto italic">De opbrengst van uw klus gaat volledig naar ons zomerkamp!</p>
     </section>
 
-    <!-- Formulier Sectie -->
-    <section id="aanmelden" class="py-16 px-4">
-        <div class="container mx-auto max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div class="bg-gray-100 p-6 border-b">
-                <h2 class="text-2xl font-bold text-scout-green">Meld uw klus aan</h2>
-                <p class="text-gray-600">Vul het formulier in en we nemen zo snel mogelijk contact met u op.</p>
-            </div>
-            
-            <!-- FORMULIER START -->
-            <form action="https://formspree.io/f/mzdabryo" method="POST" class="p-8 space-y-6">
+    <section class="py-12 px-4">
+        <div class="container mx-auto max-w-2xl bg-white rounded-2xl shadow-xl p-8">
+            <form id="klusForm" action="https://formspree.io" method="POST">
                 
-                <!-- Categorie -->
-                <div>
-                    <label class="block font-bold mb-2">Wat voor soort klus is het?</label>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <label class="cursor-pointer border rounded-lg p-3 text-center hover:bg-green-50 transition border-gray-200">
-                            <input type="radio" name="categorie" value="Tuinieren" class="hidden peer" required>
-                            <span class="peer-checked:text-scout-green peer-checked:font-bold">🌱 Tuinieren</span>
+                <!-- STAP 1: GLOBALE OPTIES -->
+                <div id="step1" class="step active">
+                    <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Stap 1: Wat voor klus is het?</h2>
+                    <div class="grid grid-cols-1 gap-4 mb-8">
+                        <label class="border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
+                            <input type="radio" name="categorie" value="Tuinieren" class="mr-2" required> 🌱 Tuinieren
                         </label>
-                        <label class="cursor-pointer border rounded-lg p-3 text-center hover:bg-green-50 transition border-gray-200">
-                            <input type="radio" name="categorie" value="Boodschappen" class="hidden peer">
-                            <span class="peer-checked:text-scout-green peer-checked:font-bold">🛒 Boodschappen</span>
+                        <label class="border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
+                            <input type="radio" name="categorie" value="Boodschappen" class="mr-2"> 🛒 Boodschappen
                         </label>
-                        <label class="cursor-pointer border rounded-lg p-3 text-center hover:bg-green-50 transition border-gray-200">
-                            <input type="radio" name="categorie" value="Schoonmaak" class="hidden peer">
-                            <span class="peer-checked:text-scout-green peer-checked:font-bold">🧹 Schoonmaak</span>
+                        <label class="border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
+                            <input type="radio" name="categorie" value="Schoonmaak" class="mr-2"> 🧹 Schoonmaak
                         </label>
-                        <label class="cursor-pointer border rounded-lg p-3 text-center hover:bg-green-50 transition border-gray-200">
-                            <input type="radio" name="categorie" value="Anders" class="hidden peer">
-                            <span class="peer-checked:text-scout-green peer-checked:font-bold">❓ Anders</span>
+                        <label class="border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
+                            <input type="radio" name="categorie" value="Anders" class="mr-2"> ❓ Iets anders...
                         </label>
                     </div>
+                    <button type="button" onclick="nextStep(2)" class="w-full bg-scout-orange text-white font-bold py-4 rounded-lg shadow-lg">Volgende stap</button>
                 </div>
 
-                <!-- Omschrijving -->
-                <div>
-                    <label class="block font-bold mb-2">Beschrijf de klus specifiek:</label>
-                    <textarea name="omschrijving" rows="4" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Bijv: Het onkruid tussen de tegels weghalen in de achtertuin..."></textarea>
-                </div>
-
-                <!-- Datum & Tijd -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block font-bold mb-2">Voorkeursdatum:</label>
-                        <input type="date" name="datum" class="w-full border border-gray-300 rounded-lg p-3" required>
+                <!-- STAP 2: DETAILS -->
+                <div id="step2" class="step">
+                    <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Stap 2: De details</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block font-bold">Wat moet er precies gebeuren?</label>
+                            <textarea name="details" rows="3" class="w-full border p-3 rounded-lg" placeholder="Beschrijf de klus..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block font-bold">Wanneer komt het uit?</label>
+                            <input type="date" name="datum" class="w-full border p-3 rounded-lg mb-2">
+                            <select name="tijd" class="w-full border p-3 rounded-lg">
+                                <option>Ochtend (09:00 - 12:00)</option>
+                                <option>Middag (13:00 - 17:00)</option>
+                                <option>In overleg</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold">Wat wilt u hiervoor geven? (€)</label>
+                            <input type="number" name="bedrag" class="w-full border p-3 rounded-lg" placeholder="Bedrag voor het kamp">
+                        </div>
                     </div>
-                    <div>
-                        <label class="block font-bold mb-2">Tijdsperiode:</label>
-                        <select name="tijd" class="w-full border border-gray-300 rounded-lg p-3">
-                            <option>Ochtend (09:00 - 12:00)</option>
-                            <option>Middag (13:00 - 17:00)</option>
-                            <option>Hele dag</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Donatie bedrag -->
-                <div>
-                    <label class="block font-bold mb-2">Wat is uw richtprijs voor deze klus? (Te betalen na afloop)</label>
-                    <div class="relative">
-                        <span class="absolute left-3 top-3 text-gray-500">€</span>
-                        <input type="number" name="bedrag" class="w-full border border-gray-300 rounded-lg p-3 pl-8" placeholder="Bedrag naar keuze" required>
+                    <div class="flex gap-2 mt-8">
+                        <button type="button" onclick="nextStep(1)" class="w-1/3 bg-gray-200 py-4 rounded-lg font-bold">Terug</button>
+                        <button type="button" onclick="nextStep(3)" class="w-2/3 bg-scout-orange text-white py-4 rounded-lg font-bold shadow-lg">Laatste stap</button>
                     </div>
                 </div>
 
-                <hr>
-
-                <!-- Contactinformatie -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block font-bold mb-2">Uw Naam:</label>
-                        <input type="text" name="naam" class="w-full border border-gray-300 rounded-lg p-3" required>
+                <!-- STAP 3: CONTACT -->
+                <div id="step3" class="step">
+                    <h2 class="text-2xl font-bold mb-6 text-scout-green border-b pb-2">Stap 3: Uw informatie</h2>
+                    <p class="text-sm text-gray-500 mb-4">* Vul uw naam in en minimaal één contactmethode.</p>
+                    <div class="space-y-4">
+                        <input type="text" name="naam" placeholder="Uw Naam" class="w-full border p-3 rounded-lg" required>
+                        <input type="email" id="email" name="email" placeholder="E-mailadres (optioneel)" class="w-full border p-3 rounded-lg">
+                        <input type="tel" id="tel" name="telefoon" placeholder="Telefoonnummer (optioneel)" class="w-full border p-3 rounded-lg">
                     </div>
-                    <div>
-                        <label class="block font-bold mb-2">Telefoonnummer:</label>
-                        <input type="tel" name="telefoon" class="w-full border border-gray-300 rounded-lg p-3" required>
+                    <div class="flex gap-2 mt-8">
+                        <button type="button" onclick="nextStep(2)" class="w-1/3 bg-gray-200 py-4 rounded-lg font-bold">Terug</button>
+                        <button type="submit" class="w-2/3 bg-scout-green text-white py-4 rounded-lg font-bold shadow-lg">Klus Aanmelden</button>
                     </div>
                 </div>
-
-                <button type="submit" class="w-full bg-scout-green text-white font-bold py-4 rounded-lg hover:bg-green-800 transition shadow-lg">Klusaanvraag Versturen</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10 text-center">
-        <p class="mb-4">Bedankt voor uw steun aan de Explorers van Scouting Alblasserdam!</p>
-        <p class="text-sm text-gray-400">&copy; 2024 Scouting Alblasserdam | Alle opbrengsten gaan naar het Zomerkamp.</p>
-    </footer>
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            window.scrollTo(0,0);
+        }
 
+        document.getElementById('klusForm').onsubmit = function() {
+            var email = document.getElementById('email').value;
+            var tel = document.getElementById('tel').value;
+            if (!email && !tel) {
+                alert('Vul a.u.b. een e-mailadres óf een telefoonnummer in zodat we contact met u kunnen opnemen.');
+                return false;
+            }
+        };
+    </script>
 </body>
 </html>
