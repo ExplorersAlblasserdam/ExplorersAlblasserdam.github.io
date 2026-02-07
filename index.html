@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cruciaal voor GitHub Pages: zorgt dat Formspree de bron herkent -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Klusjesdag | Explorers Scouting Alblasserdam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -21,8 +23,8 @@
     </header>
 
     <div class="container mx-auto max-w-2xl mt-10 px-4 mb-20">
-        <!-- FORMULIER START -->
-        <form id="klusForm" action="https://formspree.io/f/mzdabryo" method="POST" class="bg-white rounded-2xl shadow-xl p-8">
+        <!-- FORMULIER START - Gebruik POST methode -->
+        <form id="klusForm" action="https://formspree.io" method="POST" class="bg-white rounded-2xl shadow-xl p-8">
             
             <!-- STAP 1: GLOBALE OPTIES -->
             <div id="step1" class="step active">
@@ -30,7 +32,7 @@
                 <p class="mb-4 text-gray-600 italic">De opbrengst van deze dag gaat volledig naar ons zomerkamp!</p>
                 <div class="space-y-3 mb-8">
                     <label class="block border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
-                        <input type="radio" name="categorie" value="Tuinieren" class="mr-2" required> 🌱 Tuinieren
+                        <input type="radio" name="categorie" value="Tuinieren" class="mr-2" required checked> 🌱 Tuinieren
                     </label>
                     <label class="block border-2 rounded-xl p-4 cursor-pointer hover:bg-green-50 transition border-gray-200">
                         <input type="radio" name="categorie" value="Boodschappen" class="mr-2"> 🛒 Boodschappen
@@ -97,15 +99,14 @@
     </div>
 
     <script>
-        // Functie om tussen stappen te wisselen
         function showStep(stepNumber) {
             document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
             document.getElementById('step' + stepNumber).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // Check of er contactinfo is ingevuld bij verzenden
-        document.getElementById('klusForm').onsubmit = function(e) {
+        const klusForm = document.getElementById('klusForm');
+        klusForm.onsubmit = function(e) {
             const email = document.getElementById('input_email').value.trim();
             const tel = document.getElementById('input_tel').value.trim();
 
@@ -114,6 +115,7 @@
                 e.preventDefault();
                 return false;
             }
+            // Als alles goed is, gaat het formulier naar de 'action' URL met een POST verzoek
             return true;
         };
     </script>
