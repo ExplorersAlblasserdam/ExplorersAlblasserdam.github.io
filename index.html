@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klusjesdag Explorers - Scouting Alblasserdam</title>
     <style>
-        /* CSS: De 'look & feel' */
         :root {
-            --scout-green: #077840; /* Scouting Groen */
+            --scout-green: #077840;
             --scout-yellow: #F0DB3C;
             --dark-grey: #333;
             --light-grey: #f4f4f4;
@@ -16,27 +15,25 @@
         body, html {
             margin: 0; padding: 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* Zorgt dat je niet handmatig kunt scrollen */
+            overflow-x: hidden; /* Voorkom horizontaal scrollen met de muis */
             background-color: var(--light-grey);
         }
 
-        /* Container die alle pagina's naast elkaar zet */
+        /* De slider container */
         #slider {
             display: flex; 
-            width: 400vw; /* 4 pagina's van 100vw breed */
+            width: 400vw; 
             height: 100vh;
+            transform: translateX(0); /* Startpositie expliciet op 0 */
             transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
         }
 
-        /* Elke sectie is precies één schermvullende pagina */
         section {
             width: 100vw; 
             height: 100vh;
             display: flex; 
-            flex-direction: column; 
             align-items: center; 
             justify-content: center;
-            text-align: center; 
             padding: 20px; 
             box-sizing: border-box;
         }
@@ -48,47 +45,52 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             max-width: 550px; 
             width: 100%;
+            text-align: center;
         }
 
-        h1 { color: var(--scout-green); margin-top: 0; }
-        p { color: var(--dark-grey); line-height: 1.6; }
+        h1 { color: var(--scout-green); margin-top: 0; font-size: 2rem; }
+        p { color: var(--dark-grey); line-height: 1.6; font-size: 1.1rem; }
 
         .btn {
             background-color: var(--scout-green); 
             color: white; 
             border: none;
-            padding: 15px 30px; 
+            padding: 16px 32px; 
             font-size: 18px; 
-            border-radius: 5px; 
+            border-radius: 8px; 
             cursor: pointer;
             margin-top: 20px; 
             transition: 0.3s; 
             font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn:hover { background-color: #055a30; transform: translateY(-2px); }
 
-        .form-group { text-align: left; margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: var(--dark-grey); }
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--dark-grey); }
         
         input, select, textarea {
             width: 100%; 
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
+            padding: 14px; 
+            border: 2px solid #eee; 
+            border-radius: 8px; 
             box-sizing: border-box;
             font-size: 16px;
+            outline: none;
         }
+
+        input:focus, textarea:focus { border-color: var(--scout-green); }
 
         .error-msg { 
             color: #d9534f; 
-            font-size: 0.9em; 
+            font-size: 0.95em; 
             display: none; 
             margin-top: 10px; 
             font-weight: bold;
         }
 
-        .logo { max-width: 140px; margin-bottom: 15px; }
+        .logo { max-width: 160px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -96,28 +98,28 @@
 <form id="klusForm" action="https://formspree.io" method="POST">
     <div id="slider">
         
-        <!-- PAGINA 1: Introductie -->
+        <!-- STAP 1: Welkomstpagina -->
         <section>
             <div class="card">
                 <img src="https://www.scouting-alblasserdam.nl" alt="Logo" class="logo">
                 <h1>Klusjesdag 2024</h1>
-                <p>Wij zijn de <strong>Explorers van Scouting Alblasserdam</strong>! Om ons zomerkamp naar <strong>Denemarken</strong> te bekostigen, steken we graag de handen uit de mouwen.</p>
-                <p>Heeft u hulp nodig? Wij komen graag bij u langs!</p>
+                <p>Welkom! Wij zijn de <strong>Explorers van Scouting Alblasserdam</strong>.</p>
+                <p>Om ons zomerkamp naar <strong>Denemarken</strong> te financieren, steken wij graag de handen uit de mouwen. Heeft u een klusje? Wij regelen het!</p>
                 <button type="button" class="btn" onclick="moveTo(1)">Meld je klusje aan</button>
             </div>
         </section>
 
-        <!-- PAGINA 2: Type klus -->
+        <!-- STAP 2: Categorie -->
         <section>
             <div class="card">
-                <h1>Wat voor klus is het?</h1>
-                <p>Kies een categorie zodat we de juiste spullen mee kunnen nemen:</p>
+                <h1>Wat voor klus?</h1>
+                <p>Kies een categorie zodat wij ons goed kunnen voorbereiden:</p>
                 <div class="form-group">
                     <select name="soort_klus" required>
-                        <option value="" disabled selected>Kies een categorie...</option>
+                        <option value="" disabled selected>Maak een keuze...</option>
                         <option value="tuinieren">🌿 Tuinieren (harken, snoeien, etc.)</option>
-                        <option value="schoonmaken">🧹 Schoonmaken (auto wassen, ramen, etc.)</option>
-                        <option value="boodschappen">🛒 Boodschappen doen / sjouwen</option>
+                        <option value="schoonmaken">🧹 Schoonmaken (auto, ramen, etc.)</option>
+                        <option value="boodschappen">🛒 Boodschappen / Sjouwen</option>
                         <option value="anders">🛠️ Iets anders...</option>
                     </select>
                 </div>
@@ -125,21 +127,21 @@
             </div>
         </section>
 
-        <!-- PAGINA 3: Details en Tijd -->
+        <!-- STAP 3: Omschrijving & Tijd -->
         <section>
             <div class="card">
-                <h1>Details & Planning</h1>
+                <h1>Wanneer & Wat</h1>
                 <div class="form-group">
-                    <label>Wat moet er precies gebeuren?</label>
-                    <textarea name="omschrijving" rows="3" placeholder="Bijv: Het onkruid weghalen tussen de tegels..." required></textarea>
+                    <label>Korte omschrijving:</label>
+                    <textarea name="omschrijving" rows="3" placeholder="Wat moet er precies gebeuren?" required></textarea>
                 </div>
-                <div class="form-group" style="display: flex; gap: 10px;">
-                    <div style="flex: 1;">
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
                         <label>Datum:</label>
                         <input type="date" name="datum" required>
                     </div>
-                    <div style="flex: 1;">
-                        <label>Wanneer:</label>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Dagdeel:</label>
                         <select name="tijdsperiode">
                             <option value="ochtend">Ochtend</option>
                             <option value="middag">Middag</option>
@@ -148,35 +150,33 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Wat wilt u geven voor deze klus? (€)</label>
-                    <input type="number" name="donatie_bedrag" placeholder="Bedrag in Euro's" min="5">
-                    <small>Betaling geschiedt achteraf (QR of contant).</small>
+                    <label>Verwachte donatie (€):</label>
+                    <input type="number" name="donatie" placeholder="Bijv: 15" min="1">
+                    <small>Betaling via QR of contant na afloop.</small>
                 </div>
                 <button type="button" class="btn" onclick="moveTo(3)">Laatste stap</button>
             </div>
         </section>
 
-        <!-- PAGINA 4: Contact & Verzenden -->
+        <!-- STAP 4: Contact & Verzenden -->
         <section>
             <div class="card">
-                <h1>Uw gegevens</h1>
-                <p>Hoe kunnen we u bereiken voor bevestiging?</p>
+                <h1>Uw Gegevens</h1>
+                <p>Vul uw contactgegevens in zodat we de afspraak kunnen bevestigen.</p>
                 <div class="form-group">
-                    <label>Uw naam (verplicht):</label>
-                    <input type="text" name="klant_naam" id="naam" required>
+                    <label>Naam (verplicht):</label>
+                    <input type="text" name="naam" id="naam" required>
                 </div>
                 <div class="form-group">
                     <label>E-mailadres:</label>
-                    <input type="email" name="_replyto" id="email" placeholder="naam@voorbeeld.nl">
+                    <input type="email" name="_replyto" id="email" placeholder="uw@email.nl">
                 </div>
                 <div class="form-group">
                     <label>Telefoonnummer:</label>
                     <input type="tel" name="telefoon" id="tel" placeholder="06 12345678">
                 </div>
-                
-                <p id="contactError" class="error-msg">Vul a.u.b. minimaal een e-mailadres óf telefoonnummer in zodat we contact kunnen opnemen.</p>
-                
-                <button type="submit" class="btn">Klus aanvraag versturen</button>
+                <p id="contactError" class="error-msg">⚠️ Vul minimaal een e-mail óf telefoonnummer in.</p>
+                <button type="submit" class="btn">Aanvraag versturen</button>
             </div>
         </section>
 
@@ -184,13 +184,16 @@
 </form>
 
 <script>
-    // JS: De logica voor het schuiven
+    // Zorg dat we ALTIJD op de eerste pagina beginnen bij verversen
+    window.onload = function() {
+        moveTo(0);
+    };
+
     function moveTo(pageIndex) {
-        // We verplaatsen de hele slider naar links op basis van paginanummer
-        document.getElementById('slider').style.transform = `translateX(-${pageIndex * 100}vw)`;
+        const offset = pageIndex * 100;
+        document.getElementById('slider').style.transform = `translateX(-${offset}vw)`;
     }
 
-    // JS: Controle of er minimaal 1 contactmiddel is ingevuld
     const form = document.getElementById('klusForm');
     form.addEventListener('submit', function (e) {
         const email = document.getElementById('email').value;
@@ -198,8 +201,8 @@
         const error = document.getElementById('contactError');
 
         if (!email && !tel) {
-            e.preventDefault(); // Stop verzenden
-            error.style.display = 'block'; // Toon foutmelding
+            e.preventDefault();
+            error.style.display = 'block';
         } else {
             error.style.display = 'none';
         }
